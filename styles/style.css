@@ -1,0 +1,144 @@
+.img_logo {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 2%;
+    margin-bottom: auto;
+    border-width: 0;
+}
+
+form[id="form_oficial"] label {
+    font-family: "GoudyMediaeval";
+    text-align: left;
+}
+
+form[id="form_oficial"] input {
+    font-family: "GoudyMediaeval";
+    background-color: rgba(1, 1, 1, 0);
+}
+
+form[id="form_oficial"] select {
+    font-family: "GoudyMediaeval";
+    background-color: rgba(1, 1, 1, 0);
+}
+
+input[class="topFields"] {
+    border-radius: 0;
+    border-top-width: 0;
+    border-left-width: 0;
+    border-right-width: 0;
+}
+
+.top_info {
+    border-style: solid;
+    border-width: 3px;
+    border-radius: 0;
+    padding-top: 1vh;
+    padding-bottom: 1vh;
+    padding-right: 2px;
+}
+
+form[id="form_oficial"] h2 {
+    font-family: "GoudyMediaeval";
+    text-align: center;
+    font-size: 100%;
+    border-bottom-color: black;
+    border-width: 3px;
+}
+
+form[id="form_oficial"] li {
+    font-family: "GoudyMediaeval";
+    text-align: left;
+}
+
+form[id="form_oficial"] textarea {
+    font-family: "GoudyMediaeval";
+}
+
+form[id="form_oficial"] table {
+    margin-top: 0;
+    margin-bottom: 0;
+    border-width: 0;
+    background-color: rgba(1, 1, 1, 0);
+}
+
+form[id="form_oficial"] table tr {
+    background-color: rgba(1, 1, 1, 0);  
+}
+
+form[id="form_oficial"] table th {
+    border-bottom-style: solid;
+    border-bottom-width: 3px;
+}
+
+form[id="form_oficial"] table td {
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+}
+
+form[id="form_oficial"] .container{
+    margin-bottom:-15px;
+    margin-top:0;
+}
+
+form[id="form_oficial"] .container:last-child {
+    margin-bottom: 0;
+    margin-top: 0;
+}
+
+form[id="form_oficial"] header {
+    margin-bottom: -15px;
+    margin-top: 0;
+}
+
+form[id="form_oficial"] a:hover{
+    cursor: url(/modules/fichaTagmar/styles/xp-middle-finger.cur), auto;
+}
+
+.bordas {
+    margin-top: 2vh;
+    border-style: solid;
+    border-width: 3px;
+    border-radius: 0;
+    padding-bottom: 1vh;
+}
+
+.bordas .row {
+    margin-top: 1vh;
+}
+
+.bordas input {
+    text-align: center;
+    border-width: 2px;
+    border-radius: 0;
+}
+
+.bordas select {
+    text-align: center;
+    border-width: 2px;
+    border-radius: 0;
+}
+
+.grup_armas input {
+    border-width: 0;
+    height: 20px;
+}
+
+.grup_armas td {
+    border-width:0;
+    border-right-width:1px;
+    border-right-style:solid;
+    border-right-color:gray;
+}
+
+.fichaO {
+    background-position: top;
+}
+
+.credito {
+    color: rgba(1, 1, 1, 0);
+}
+
+.credito:hover {
+    color: rgb(78, 2, 2);
+}
+

@@ -1,0 +1,106 @@
+<div class="container">
+    <div class="row">
+
+        <div class="col-4"> <!-- Atributos Básicos -->
+            <div class="col-12 bordas" style="height: 330px;">
+                <h2>Atributos Básicos</h2>
+                <div class="row">
+                    <div class="col-3"><label><a class="rollAtributo" data-item-id="INT">Intelecto</a></label></div>
+                    <div class="col-3"><input type="number" name="data.atributos.INT" value="{{ data.data.atributos.INT }}"/></div>
+                    <div class="col-3"><label><a class="rollAtributo" data-item-id="FIS">Físico</a></label></div>
+                    <div class="col-3"><input type="number" name="data.atributos.FIS" value="{{ data.data.atributos.FIS }}"/></div>
+                </div>
+                <div class="row">
+                    <div class="col-3"><label><a class="rollAtributo" data-item-id="AUR">Aura</a></label></div>
+                    <div class="col-3"><input type="number" name="data.atributos.AUR" value="{{ data.data.atributos.AUR }}"/></div>
+                    <div class="col-3"><label><a class="rollAtributo" data-item-id="AGI">Agilidade</a></label></div>
+                    <div class="col-3"><input type="number" name="data.atributos.AGI" value="{{ data.data.atributos.AGI }}"/></div>
+                </div>
+                <div class="row">
+                    <div class="col-3"><label><a class="rollAtributo" data-item-id="CAR">Carisma</a></label></div>
+                    <div class="col-3"><input type="number" name="data.atributos.CAR" value="{{ data.data.atributos.CAR }}"/></div>
+                    <div class="col-3"><label><a class="rollAtributo" data-item-id="PER">Percepção</a></label></div>
+                    <div class="col-3"><input type="number" name="data.atributos.PER" value="{{ data.data.atributos.PER }}"/></div>
+                </div>
+                <div class="row">
+                    <div class="col-3"><label><a class="rollAtributo" data-item-id="FOR">Força</a></label></div>
+                    <div class="col-3"><input type="number" name="data.atributos.FOR" value="{{ data.data.atributos.FOR }}"/></div>
+                    <div class="col-6"></div>
+                </div>
+                <div class="row">
+                    <div class='col-12'>
+                        <h2>Atributos Secundários</h2>
+                    </div>
+                </div>
+                <div class="row"> <!-- Resistencia Física -->
+                    <div class="col-7">
+                        <label>Resistência Física</label>
+                    </div>
+                    <div class="col-3">
+                        <input type="number" name="data.rf" value="{{ data.data.rf }}" readonly/>
+                    </div>
+                    <div class="col-2">
+                        <a class="testeRF" title="Teste de Resistência Física."><i class="fas fa-dice-d20"></i></a>
+                    </div>
+                </div>
+                <div class="row"> <!-- Resistencia Magia -->
+                    <div class="col-7">
+                        <label>Restência à Magia</label>
+                    </div>
+                    <div class="col-3">
+                        <input type="number" name="data.rm" value="{{ data.data.rm }}" readonly/>
+                    </div>
+                    <div class="col-2">
+                        <a class="testeRM" title="Teste de Resistência à Magia."><i class="fas fa-dice-d20"></i></a>
+                    </div>
+                </div>
+                <div class="row"> <!-- Velocidade Base -->
+                    <div class="col-7">
+                        <label>Velocidade</label>
+                    </div>
+                    <div class="col-3">
+                        <input type="number" name="data.vb" value="{{ data.data.vb }}" readonly/>
+                    </div>
+                    <div class="col-2"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-4"> <!-- Descrição / Caracterização -->
+            <div class="col-12 bordas" style="height: 330px;">
+                {{#ifdf data.data.v_base 0}} <!-- TextArea Ativado -->
+                    <h2>Caracterizações <a class='ativaDesc' title='Desativar edição do texto.'><i class="fas fa-toggle-on"></i></a></h2>
+                    <div class="row">
+                        <div class="col-12">
+                            <textarea style="height: 270px;" name="data.descricao" data-dtype="String" value="{{ data.data.descricao }}">{{ data.data.descricao }}</textarea>
+                        </div>
+                    </div>
+                {{/ifdf}}
+                {{#ifeq data.data.v_base 0}} <!-- TextArea Desativado -->
+                    <h2>Caracterizações <a class='ativaDesc' title='Ativar edição do texto.'><i class="fas fa-toggle-off"></i></a></h2>
+                    <div class="row">
+                        <div class="col-12">
+                            <textarea style="height: 270px;" name="data.descricao" data-dtype="String" value="{{ data.data.descricao }}" disabled>{{ data.data.descricao }}</textarea>
+                        </div>
+                    </div>
+                {{/ifeq}}
+            </div>
+        </div>
+
+        <div class="col-4"> <!-- Pertences -->
+            <div class="col-12 bordas" style="height: 330px;">
+                <h2>Pertences & Afins</h2>
+                <div class="row">
+                    <div class="col-12">
+                        <ul style="list-style-type:none;height: 270px; overflow:auto;margin-top:-5px;">
+                            {{#each actor.pertences as |pertence|}}
+                                <li class="item" style="margin-left:-1vw;border-bottom-style:solid;border-width:1px;" data-item-id="{{pertence.id}}">{{pertence.name}} <span style="float: right; margin-right:2px;"><a class="item-control item-edit" title="Editar"><i class="fas fa-edit"></i></a> <a class="item-control item-delete" title="Deletar"><i class="fas fa-trash"></i></a></span></li>
+                            {{/each}}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

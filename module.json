@@ -1,0 +1,27 @@
+{
+    "name": "fichaTagmar",
+    "title": "Ficha Tagmar",
+    "description": "Ficha mais parecida com a oficial.",
+    "version": "1.0.0",
+    "minimumCoreVersion": "0.8.8",
+    "compatibleCoreVersion": "0.8.8",
+    "author": "Marcos Walker (Xaura)",
+    "authors": [
+		{
+			"name": "Marcos Walker",
+			"url": ""
+		}
+	],
+    "esmodules": [
+        "modules/main.js"
+    ],
+    "scripts": [
+        
+    ],
+    "styles": [
+        "styles/style.css"
+    ],
+    "url": "https://github.com/marcoswalker/fichaTagmar",
+    "manifest": "https://raw.githubusercontent.com/marcoswalker/fichaTagmar/master/module.json",
+    "download": "https://codeload.github.com/marcoswalker/fichaTagmar/zip/master"
+}

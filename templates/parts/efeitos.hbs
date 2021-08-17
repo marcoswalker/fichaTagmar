@@ -1,0 +1,121 @@
+<div class="container">
+    <div class="row">
+
+        <div class="col-8">
+            <div class="col-12 bordas" style="height: 400px;overflow:auto;">
+                <table>
+                    <tr>
+                        <th class="mediaeval" style="text-align: left;">Efeitos</th>
+                        <th class="mediaeval">Atributo</th>
+                        <th class="mediaeval">Tipo</th>
+                        <th class="mediaeval">Valor</th>
+                        <th class="mediaeval">Ativo</th>
+                        <th class="mediaeval">Editar</th>
+                    </tr>
+                    {{#each actor.efeitos as |efeito|}}
+                        <tr class="item" data-item-id="{{efeito.id}}">
+                            <td class="mediaeval">{{efeito.name}}</td>
+                            <td class="mediaeval" style="text-align: center;">{{efeito.data.data.atributo}}</td>
+                            <td class="mediaeval" style="text-align: center;">{{efeito.data.data.tipo}}</td>
+                            <td class="mediaeval" style="text-align: center;">{{efeito.data.data.valor}}</td>
+                            <td class="mediaeval" style="text-align: center;">
+                                {{#if efeito.data.data.ativo}}
+                                    <a class="ativaEfeito" title="Desativar"><i class="fas fa-check-circle"></i></a>
+                                {{else}}
+                                    <a class="ativaEfeito" title="Ativar"><i class="far fa-times-circle"></i></a>
+                                {{/if}}
+                            </td> 
+                            <td style="text-align: center;">
+                                <a class="item-control item-edit" title="Editar"><i class="fas fa-edit"></i></a>
+                                <a class="item-control item-delete" title="Deletar"><i class="fas fa-trash"></i></a>
+                            </td>
+                        </tr>
+                    {{/each}}
+                </table>
+            </div>
+        </div>
+
+        <div class="col-4">
+            <div class="col-12 bordas" style="height: 400px;overflow:auto;">
+                <h2 style="text-align: center;">Informações adicionais</h2>
+                <div class="row">
+                    <div class="col-6"><label>Iniciativa</label></div>
+                    <div class="col-1"></div>
+                    <div class="col-4"><input style="width: 40px;" type="number" name="data.iniciativa" value="{{ data.data.iniciativa }}" /></div>
+                    <div class="col-1"></div>
+                </div>
+                <div class="row">
+                    <div class="col-3"><label>Absorção</label></div>
+                    <div class="col-3">
+                        <input type="number" style="width: 40px;" name="data.absorcao.value" value="{{ data.data.absorcao.value }}"/>
+                    </div>
+                    <div class="col-1"><label>/</label></div>
+                    <div class="col-3">
+                        <input type="number" style="width: 40px;" name="data.absorcao.max" value="{{ data.data.absorcao.max }}" readonly/>
+                    </div>
+                    <div class="col-2"></div>
+                </div>
+                <div class="row">
+                    <div class="col-3"><label>Focus</label></div>
+                    <div class="col-3">
+                        <input type="number" style="width: 40px;"  name="data.focus.value" value="{{ data.data.focus.value }}"/>
+                    </div>
+                    <div class="col-1"><label>/</label></div>
+                    <div class="col-3">
+                        <input type="number" style="width: 40px;" name="data.focus.max" value="{{ data.data.focus.max }}"/>
+                    </div>
+                    <div class="col-2"></div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <h2 style="text-align: center;">Def. Oponente</h2>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-2"></div>
+                    <div class="col-4">
+                        <select title="Tipo da defesa do oponente." class="mediaeval" name="data.inf_ataque.cat_def" type="text" value="{{data.data.inf_ataque.cat_def}}" data-dtype="String" style="font-size: 110%;">
+                            {{#select data.data.inf_ataque.cat_def}}
+                                <option value="L">L</option>
+                                <option value="M">M</option>
+                                <option value="P">P</option>
+                            {{/select}}
+                        </select>
+                    </div>
+                    <div class="col-4">
+                        <input title="Valor da defesa do oponente." name="data.inf_ataque.valor_def" type="number" value="{{data.data.inf_ataque.valor_def}}" />
+                    </div>
+                    <div class="col-2"></div>
+                </div>
+                <div class="row">
+                    <div class="col-1"></div>
+                    <div class="col-6"><label>Bônus/Penalidade</label></div>
+                    <div class="col-4">
+                        <input title="Bônus/Penalidade será aplicado a todos os ataques.(Nenhum valor, preencher zero)" name="data.inf_ataque.bonus" type="number" value="{{data.data.inf_ataque.bonus}}" />
+                    </div>
+                    <div class="col-1"></div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <h2 style="text-align: center;">Calcular nova EH</h2>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-3"></div>
+                    <div class="col-6">
+                        <table class='table_novaEH' style="border: solid 3px gray;">
+                            <tr style="text-align: center;">
+                                <th class="mediaeval" style="border-color:gray;"><a title="Clique para rolar 1d10." class="roll1d10" style="margin-right: 10px;"><i class="fas fa-dice-d20"></i></a>  <a class="calculaNovaEH" title="Calcular EH"><i class="fas fa-calculator"></i></a></th>
+                            </tr>
+                            <tr style="text-align: center;">
+                                <td><input style="border-width: 0;" title="Valor sorteado." class="valord10EH" name="data.valor_dado_eh" value="{{data.data.valor_dado_eh}}" type="number"/></td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="col-3"></div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

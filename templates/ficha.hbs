@@ -1,0 +1,99 @@
+<form class="{{cssClass}}" autocomplete="off" id="form_oficial">
+    <header class="sheet-header">
+        <div class='container'>
+            <div class="col-12 top_info">
+                <div class="row">
+                    <div class="col-5">
+                <div class="container" style="padding-left:0;">
+                    <div class="row">
+                        <div class="col-4">
+                            <label>Nome:</label>
+                        </div>
+                        <div class="col-8">
+                            <input class="topFields" style="margin-left:-2.2vw;" type="text" name="name" value="{{actor.name}}"/>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-4">
+                            <label><a class="editRaca">Raça:</a></label>
+                        </div>
+                        <div class="col-8">
+                            <input class="topFields" style="margin-left:-2.2vw;" type="text" name="data.raca" value="{{ data.data.raca }}" readonly/>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-4">
+                            <label><a class="editProf">Profissão:</a></label>
+                        </div>
+                        <div class="col-8">
+                            <input class="topFields" style="margin-left:-2.2vw;" type="text" name="data.profissao" value="{{ data.data.profissao }}" readonly/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-3">
+                <img class="img_logo" src="systems/{{actor.system_name}}/templates/sheets/img/logo.png"/> 
+            </div>
+            <div class="col-1">
+                <nav class="prim-tabs tabs" data-group="primary">       <!--Tabs-->
+                    <ul style="list-style-type:none;margin-top:20px;">
+                        <li><a class="item" data-tab="frente" title="Frente"><i class="fas fa-backward"></i></a></li>
+                        <li style="margin-top:5px;"><a class="item" data-tab="verso" title="Verso"><i class="fas fa-forward"></i></a></li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="col-3">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-4">
+                            <label>Estágio:</label>
+                        </div>
+                        <div class="col-8">
+                            <input style="width: 8vh;float:right;" class="topFields" type="number" name="data.estagio" value="{{ data.data.estagio }}"/>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-4">
+                            <label>Experiência:</label>
+                        </div>
+                        <div class="col-8">
+                            <input style="width: 8vh;float:right;" class="topFields" type="text" name="data.pontos_estagio.value" value="{{ data.data.pontos_estagio.value }}"/>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-4">
+                            <label>Deus:</label>
+                        </div>
+                        <div class="col-8">
+                            <input style="width: 8vh;float:right;" class="topFields" type="text" name="data.deus" value="{{ data.data.deus }}"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <section class="sheet-primary">
+        <div class="tab frente" data-group="primary" data-tab="frente">
+            {{> "modules/fichaTagmar/templates/parts/atributos.hbs" }}
+            {{> "modules/fichaTagmar/templates/parts/habilidades.hbs" }}
+            {{> "modules/fichaTagmar/templates/parts/combates.hbs" }}
+            {{> "modules/fichaTagmar/templates/parts/magias.hbs" }}
+        </div>
+        <div class="tab verso" data-group="primary" data-tab="verso">
+            {{> "modules/fichaTagmar/templates/parts/verso.hbs" }}
+            {{> "modules/fichaTagmar/templates/parts/efeitos.hbs" }}
+
+
+            <div class="container" style="margin-top:20px;">
+                <div class="row">
+                    <div class="col-7"></div>
+                    <div class="col-5 mediaeval credito">by Marcos Walker (Xaura) & Vinicius F. Lago (Pirata)</div>
+                </div>
+            </div>
+
+            
+        </div>
+    </section>
+</form>

@@ -692,5 +692,6 @@ export default class fichaOficial extends ActorSheet {
         this.profissao = actorData.profissao;
         // get system name
         actorData.system_name = game.system.id;
+        actorData.ficha = "Pontos";
     }
 }

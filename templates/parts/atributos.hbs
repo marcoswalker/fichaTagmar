@@ -94,7 +94,7 @@
                     <div class="col-12">
                         <ul style="list-style-type:none;height: 270px; overflow:auto;margin-top:-5px;">
                             {{#each actor.pertences as |pertence|}}
-                                <li class="item" style="margin-left:-1vw;border-bottom-style:solid;border-width:1px;" data-item-id="{{pertence.id}}">{{pertence.name}} <span style="float: right; margin-right:2px;"><a class="item-control item-edit" title="Editar"><i class="fas fa-edit"></i></a> <a class="item-control item-delete" title="Deletar"><i class="fas fa-trash"></i></a></span></li>
+                                <li class="item" style="margin-left:-1vw;border-bottom-style:solid;border-width:1px;" data-item-id="{{pertence.id}}">{{pertence.name}} <span data-item-id="{{pertence.id}}" class="movePertence" title="Mover para Transporte" style="float: right; margin-right:2px;"><a class="item-control item-edit" title="Editar"><i class="fas fa-edit"></i></a> <a class="item-control item-delete" title="Deletar"><i class="fas fa-trash"></i></a></span></li>
                             {{/each}}
                         </ul>
                     </div>

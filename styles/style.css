@@ -94,6 +94,10 @@ form[id="form_oficial"] a:hover{
     cursor: url(/modules/fichaTagmar/styles/xp-middle-finger.cur), auto;
 }
 
+form[id="form_oficial"] button:hover{
+    cursor: url(/modules/fichaTagmar/styles/xp-middle-finger.cur), auto;
+}
+
 .bordas {
     margin-top: 2vh;
     border-style: solid;
@@ -142,3 +146,16 @@ form[id="form_oficial"] a:hover{
     color: rgb(78, 2, 2);
 }
 
+.criarButtons button {
+    text-align: center;
+    width: 40px;
+    border-style: solid;
+    border-width: 3px;
+    border-radius: 0;
+    border-color: gray;
+    background-color: rgba(1, 1, 1, 0);
+}
+
+.criarButtons button:hover {
+    background-color: rgba(124, 23, 23, 0.664);
+}

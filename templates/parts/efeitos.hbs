@@ -2,7 +2,7 @@
     <div class="row">
 
         <div class="col-8">
-            <div class="col-12 bordas" style="height: 400px;overflow:auto;">
+            <div class="col-12 bordas" style="height: 470px;overflow:auto;">
                 <table>
                     <tr>
                         <th class="mediaeval" style="text-align: left;">Efeitos</th>
@@ -36,13 +36,16 @@
         </div>
 
         <div class="col-4">
-            <div class="col-12 bordas" style="height: 400px;overflow:auto;">
+            <div class="col-12 bordas" style="height: 470px;overflow:auto;">
                 <h2 style="text-align: center;">Informações adicionais</h2>
                 <div class="row">
-                    <div class="col-6"><label>Iniciativa</label></div>
+                    <div class="col-3"><label>Iniciativa</label></div>
+                    <div class="col-3"><input style="width: 40px;" type="number" name="data.iniciativa" value="{{ data.data.iniciativa }}" /></div>
                     <div class="col-1"></div>
-                    <div class="col-4"><input style="width: 40px;" type="number" name="data.iniciativa" value="{{ data.data.iniciativa }}" /></div>
-                    <div class="col-1"></div>
+                    <div class="col-3" style="text-align: center;">
+                        <a class="rolarIniciativa" title="Rolar Iniciativa."><i class="fas fa-dice-d20"></i></a>
+                    </div>
+                    <div class="col-2"></div>
                 </div>
                 <div class="row">
                     <div class="col-3"><label>Absorção</label></div>
@@ -112,6 +115,29 @@
                         </table>
                     </div>
                     <div class="col-3"></div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <h2 style="text-align: center;">Criar Itens</h2>
+                    </div>
+                </div>
+                <div class="row criarButtons">
+                    <div class="col-2">
+                        <button class="newHabilidade" title="Criar item de Habilidade."><i class="fas fa-hammer"></i></button>
+                    </div>
+                    <div class="col-2">
+                        <button class="newCombat" title="Criar item de Combate/Defesa."><i class="fas fa-user-shield"></i></button>
+                    </div>
+                    <div class="col-2">
+                        <button class="newMagia" title="Criar item de Magia."><i class="fas fa-dragon"></i></button>
+                    </div>
+                    <div class="col-2">
+                        <button class="newPertence" title="Criar item de Pertence/Transporte."><i class="fas fa-drumstick-bite"></i></button>
+                    </div>
+                    <div class="col-2">
+                        <button class="newEfeito" title="Criar item de Efeito."><i class="fas fa-lungs"></i></button>
+                    </div>
+                    <div class="col-2"></div>
                 </div>
             </div>
         </div>

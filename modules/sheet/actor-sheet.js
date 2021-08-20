@@ -194,6 +194,132 @@ export default class fichaOficial extends ActorSheet {
             $(html.find(".valord10EH")).val(r.total);
             $('.calculaNovaEH').css('color', 'rgb(94, 8, 8)');
         });
+        html.find('.newEfeito').click(this._newEfeito.bind(this));
+        html.find(".newHabilidade").click(this._newHabilidade.bind(this));
+        html.find(".newCombat").click(this._newCombate.bind(this));
+        html.find(".newMagia").click(this._newMagia.bind(this));
+        html.find(".newPertence").click(this._newPertence.bind(this));
+        html.find(".rolarIniciativa").click(this._rolarIniciativa.bind(this));
+    }
+
+    _rolarIniciativa(event) {
+        if (!this.options.editable) return;
+        if (game.combats.size > 0) this.actor.rollInitiative({createCombatants:false, rerollInitiative:false});
+    }
+
+    _newMagia(event) {
+        if (!this.options.editable) return;
+        const actor = this.actor;
+        actor.createEmbeddedDocuments('Item', [{name: "Nova Magia", type: "Magia"}]).then(function (item) {
+            item[0].sheet.render(true);
+        });
+    }
+
+    _newPertence(event) {
+        if (!this.options.editable) return;
+        let create = false;
+        let tipo = "";
+        const actor = this.actor;
+        let dialogContent = `<div>
+            <label for="selectTipo" class="mediaeval">Selecione o tipo do item:</label>
+            <select id="selectTipo" name="selectTipo" class="selectType mediaeval" height="30" style="margin-left:2px;">
+                <option value="Pertence">Pertence</option>
+                <option value="Transporte">Transporte</option>
+            </select>
+        </div>`;
+        let dialog = new Dialog({
+            title: "Escolha o tipo do item que deseja criar.",
+            content: dialogContent,
+            buttons: {
+                criar: {
+                    icon: '<i class="fas fa-check"></i>',
+                    label: "Criar Item",
+                    callback: html => {
+                        create = true;
+                        tipo = html.find(".selectType").val();
+                    }
+                },
+                cancel: {
+                    icon: '<i class="fas fa-times"></i>',
+                    label: 'Cancelar'
+                }
+            },
+            default: "cancel",
+            close: html => {
+                if (create) {
+                    if (tipo.length > 0) {
+                        actor.createEmbeddedDocuments("Item", [{name: `Novo ${tipo}`, type: tipo}]).then(function (item) {
+                            item[0].sheet.render(true);
+                        });
+                    }
+                }
+            }
+        });
+        dialog.render(true);
+    }
+
+    _newCombate(event) {
+        if (!this.options.editable) return;
+        let create = false;
+        let tipo = "";
+        const actor = this.actor;
+        let dialogContent = `<div>
+            <label for="selectTipo" class="mediaeval">Selecione o tipo do item:</label>
+            <select id="selectTipo" name="selectTipo" class="selectType mediaeval" height="30" style="margin-left:2px;">
+                <option value="Ataque">Ataque</option>
+                <option value="Defesa">Defesa</option>
+                <option value="Tecnica">Técnica de Combate</option>
+            </select>
+            </div>`;
+        let dialog = new Dialog({
+            title: "Escolha o tipo do item que deseja criar.",
+            content: dialogContent,
+            buttons: {
+                criar: {
+                    icon: '<i class="fas fa-check"></i>',
+                    label: "Criar Item",
+                    callback: html => {
+                        create = true;
+                        tipo = html.find(".selectType").val();
+                    }
+                },
+                cancel: {
+                    icon: '<i class="fas fa-times"></i>',
+                    label: 'Cancelar'
+                }
+            },
+            default: "cancel",
+            close: html => {
+                if (create) {
+                    let tipoItem = "";
+                    if (tipo == "Ataque") tipoItem = "Combate";
+                    else if (tipo == "Defesa") tipoItem = "Defesa";
+                    else if (tipo == "Tecnica") tipoItem = "TecnicasCombate";
+                    if (tipoItem.length > 0) {
+                        actor.createEmbeddedDocuments("Item", [{name: "Novo Item Criado", type: tipoItem}]).then(function (item) {
+                            item[0].sheet.render(true);
+                        });
+                    }
+                }
+            }
+        });
+        dialog.render(true);
+    }
+
+    _newHabilidade(event) {
+        if (!this.options.editable) return;
+        const actor = this.actor;
+        actor.createEmbeddedDocuments("Item", [{name: "Nova Habilidade", type: "Habilidade", data: {tipo: "profissional"}}]).then(function (item) {
+            item[0].sheet.render(true);
+        });
+    }
+
+    _newEfeito(event) {
+        if (!this.options.editable) return;
+        const actor = this.actor;
+        actor.createEmbeddedDocuments('Item', [{name: "Novo Efeito", type: "Efeito"}]).then(function (efeito) {
+            efeito[0].sheet.render(true);
+        });
     }
 
     _passandoEH(event) {

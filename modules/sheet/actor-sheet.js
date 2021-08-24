@@ -18,7 +18,7 @@ export default class fichaOficial extends ActorSheet {
         if (this.actor.data.type != "Personagem") {
             return;
         }
-        let layout = game.settings.get("tagmar_rpg", "sheetTemplate");
+        let layout = game.settings.get(game.system.id, "sheetTemplate");
         if (layout != "base") {
             if (layout == 'tagmar3anao') {
                 return 'modules/fichaTagmar/templates/ficha-borda-anao.hbs';

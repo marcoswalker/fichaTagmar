@@ -2,7 +2,7 @@
     "name": "fichaTagmar",
     "title": "Ficha Tagmar",
     "description": "Ficha mais parecida com a oficial.",
-    "version": "1.0.6",
+    "version": "1.0.7",
     "minimumCoreVersion": "0.8.8",
     "compatibleCoreVersion": "0.8.9",
     "author": "Marcos Walker (Xaura)",

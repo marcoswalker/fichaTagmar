@@ -200,6 +200,72 @@ export default class fichaOficial extends ActorSheet {
         html.find(".newMagia").click(this._newMagia.bind(this));
         html.find(".newPertence").click(this._newPertence.bind(this));
         html.find(".rolarIniciativa").click(this._rolarIniciativa.bind(this));
+        html.find('.idiomas').click(this._linguasDialog.bind(this));
+    }
+
+    _linguasDialog(event) {
+        return ui.notifications.warn("Em desenvolvimento.Aguardando lista de línguas para concluir.");
+        let dialogContent = `
+            <ul id="linguas" class="mediaeval" style="list-style-type:none;">
+            <li><input type="checkbox" value="males"/>Malês</li>
+            <li><input type="checkbox" value="leva"/>Leva</li>
+            <li><input type="checkbox" value="lud"/>Lud</li>
+            <li><input type="checkbox" value="eredri"/>Eredri</li>
+            <li><input type="checkbox" value="verrogari"/>Verrogari</li>
+            <li><input type="checkbox" value="dantseniano"/>Dantseniano</li>
+            <li><input type="checkbox" value="maranes"/>Maranês</li>
+            <li><input type="checkbox" value="lunes"/>Lunês</li>
+            <li><input type="checkbox" value="runes"/>Runês</li>
+            <li><input type="checkbox" value="abadrim"/>Abadrim</li>
+            <li><input type="checkbox" value="planense"/>Planense</li>
+            <li><input type="checkbox" value="linguacomumdascidadesestados"/>Língua comum das Cidades-Estados</li>
+            <li><input type="checkbox" value="linguacomumdosmangues"/>Língua comum dos Mangues</li>
+            <li><input type="checkbox" value="rubeo"/>Rúbeo</li>
+            <li><input type="checkbox" value="lazuli"/>Lazúli</li>
+            <li><input type="checkbox" value="linguasbarbaras"/>Línguas bárbaras</li>
+            <li><input type="checkbox" value="aktar"/>Aktar</li>
+            <li><input type="checkbox" value="dictio"/>Díctio</li>
+            <li><input type="checkbox" value="birso"/>Birso</li>
+            <li><input type="checkbox" value="povosdodeserto"/>Povos do deserto</li>
+            <li><input type="checkbox" value="lanta"/>Lanta</li>
+            <li><input type="checkbox" value="avozdepedra"/>A voz de pedra</li>
+            <li><input type="checkbox" value="elfico"/>Élfico</li>
+            <li><input type="checkbox" value="tessaldar"/>Tessaldar</li>
+            <li><input type="checkbox" value="kurng"/>Kurng</li>
+            <li><input type="checkbox" value="linguadasfadas"/>Língua das fadas</li>
+            <li><input type="checkbox" value="linguadosdragoes"/>Língua dos dragões</li>
+            <li><input type="checkbox" value="linguasselvagens"/>Línguas selvagens</li>
+            <li><input type="checkbox" value="marante"/>Marante</li>
+            </ul>`;
+        let dialog = new Dialog({
+            title: "Idiomas",
+            content: dialogContent,
+            buttons: {
+                salvar: {
+                    icon: '<i class="fas fa-check"></i>',
+                    label: "Salvar",
+                    callback: (html) => {
+                        let idiomas = [];
+                        let ul = html.find('input:checked');
+                        $(ul).each(function (i, c) {
+                            idiomas.push(c.value);
+                        });
+                        this.actor.update({
+                            'data.defesa.categoria': idiomas.join(';')
+                        });
+                    }
+                }
+            },
+            render: (html) => {
+                let idiomas = this.actor.data.data.defesa.categoria.split(';');
+                html.find('input[type="checkbox"]').each(function (i, c) {
+                    if (idiomas.includes(c.value)) {
+                        $(c).prop('checked',true);
+                    }
+                });
+            }
+        });
+        dialog.render(true);
     }
 
     _rolarIniciativa(event) {

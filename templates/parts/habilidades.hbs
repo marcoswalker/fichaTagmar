@@ -6,7 +6,7 @@
                 <div class="col-4" style="text-align: right;">
                     <h4 class="mediaeval">Habilidade Nata(<span style="color: gray;">{{actor.profissao.data.data.hab_nata}}</span>):</h4>
                 </div>
-                <div class="col-4">
+                <div class="col-3">
                     <select class="mediaeval" name="data.hab_nata" type="text" data-dtype="String" value="{{data.data.hab_nata}}" height="30" title="Selecione sua Habilidade Nata."/>
                         {{#select data.data.hab_nata}}
                             <option value=""></option>
@@ -31,7 +31,10 @@
                         {{/select}}
                     </select>
                 </div>
-                <div class="col-3" style="text-align: right;">
+                <div class="col-2">
+                    <a class="idiomas mediaeval" title="Selecione os idiomas de seu Personagem"><i class="fas fa-language"></i> Idiomas</a>
+                </div>
+                <div class="col-2" style="text-align: right;">
                     <h4 class="mediaeval">Bônus/Penalidade:</h4>
                 </div>
                 <div class="col-1">

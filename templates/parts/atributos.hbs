@@ -68,22 +68,12 @@
 
         <div class="col-4"> <!-- Descrição / Caracterização -->
             <div class="col-12 bordas" style="height: 330px;">
-                {{#ifdf data.data.v_base 0}} <!-- TextArea Ativado -->
-                    <h2>Caracterizações <a class='ativaDesc' title='Desativar edição do texto.'><i class="fas fa-toggle-on"></i></a></h2>
-                    <div class="row">
-                        <div class="col-12">
-                            <textarea style="height: 270px;" name="data.descricao" data-dtype="String" value="{{ data.data.descricao }}">{{ data.data.descricao }}</textarea>
-                        </div>
+                <h2>Caracterizações</h2>
+                <div class="row">
+                    <div class="col-12">
+                        <textarea style="height: 270px;" name="data.descricao" data-dtype="String" value="{{ data.data.descricao }}">{{ data.data.descricao }}</textarea>
                     </div>
-                {{/ifdf}}
-                {{#ifeq data.data.v_base 0}} <!-- TextArea Desativado -->
-                    <h2>Caracterizações <a class='ativaDesc' title='Ativar edição do texto.'><i class="fas fa-toggle-off"></i></a></h2>
-                    <div class="row">
-                        <div class="col-12">
-                            <textarea style="height: 270px;" name="data.descricao" data-dtype="String" value="{{ data.data.descricao }}" disabled>{{ data.data.descricao }}</textarea>
-                        </div>
-                    </div>
-                {{/ifeq}}
+                </div>
             </div>
         </div>
 

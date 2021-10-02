@@ -133,7 +133,6 @@ export default class fichaOficial extends ActorSheet {
     activateListeners(html) {
         super.activateListeners(html);
         if (!this.options.editable) return;
-        html.find('.ativaDesc').click(this._edtDesc.bind(this));    // Ativa Descrição
 
         html.find('.item-edit').click(ev => {                       // Item Edit
             const li = $(ev.currentTarget).parents(".item");
@@ -559,20 +558,6 @@ export default class fichaOficial extends ActorSheet {
             }
         });
         dialog.render(true);
-    }
-    
-    _edtDesc(event) {
-        const actorData = this.actor.data.data;
-        if (actorData.v_base == 0) {
-            this.actor.update({
-                'data.v_base': 1
-            });
-        } else {
-            this.actor.update({
-                'data.v_base': 0
-            });
-        }
-        event.preventDefault();
     }
 
     _getItems(sheetData) {  // get Actor Items

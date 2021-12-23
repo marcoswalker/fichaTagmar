@@ -4,7 +4,7 @@
     "description": "Ficha mais parecida com a oficial.",
     "version": "1.0.9",
     "minimumCoreVersion": "0.8.8",
-    "compatibleCoreVersion": "0.8.9",
+    "compatibleCoreVersion": "9",
     "author": "Marcos Walker (Xaura)",
     "authors": [
 		{

@@ -4,11 +4,11 @@
             <h2>Habilidades</h2>
             <div class="row">
                 <div class="col-4" style="text-align: right;">
-                    <h4 class="mediaeval">Habilidade Nata(<span style="color: gray;">{{actor.profissao.data.data.hab_nata}}</span>):</h4>
+                    <h4 class="mediaeval">Habilidade Nata(<span style="color: gray;">{{actor.profissao.system.hab_nata}}</span>):</h4>
                 </div>
                 <div class="col-3">
-                    <select class="mediaeval" name="data.hab_nata" type="text" data-dtype="String" value="{{data.data.hab_nata}}" height="30" title="Selecione sua Habilidade Nata."/>
-                        {{#select data.data.hab_nata}}
+                    <select class="mediaeval" name="system.hab_nata" type="text" data-dtype="String" value="{{data.system.hab_nata}}" height="30" title="Selecione sua Habilidade Nata."/>
+                        {{#select data.system.hab_nata}}
                             <option value=""></option>
                             {{#each actor.h_prof as |h_prof|}}
                                 <option value="{{h_prof.name}}">{{h_prof.name}}</option>
@@ -38,7 +38,7 @@
                     <h4 class="mediaeval">Bônus/Penalidade:</h4>
                 </div>
                 <div class="col-1">
-                    <input name="data.bonus_habil" type="number" value="{{data.data.bonus_habil}}" height="30" title="Bônus/Penalidade será aplicado a todas as habilidades.(Nenhum valor, preencher zero)"/>
+                    <input name="system.bonus_habil" type="number" value="{{data.system.bonus_habil}}" height="30" title="Bônus/Penalidade será aplicado a todas as habilidades.(Nenhum valor, preencher zero)"/>
                 </div>
             </div>
             <div class="row">
@@ -53,8 +53,8 @@
                         {{#each actor.h_prof as |hab|}}
                             <tr data-item-id="{{hab.id}}" class="item">
                                 <td class="mediaeval"><a class="dragable rollable" data-item-id="{{ hab.id }}">{{hab.name}}</a></td>
-                                <td class="mediaeval" style="text-align: center;">{{hab.data.data.nivel}}</td>
-                                <td class="mediaeval" style="text-align: center;">{{hab.data.data.total}}</td>
+                                <td class="mediaeval" style="text-align: center;">{{hab.system.nivel}}</td>
+                                <td class="mediaeval" style="text-align: center;">{{hab.system.total}}</td>
                                 <td style="text-align: center;">
                                     <a class="item-control item-edit" title="Editar"><i class="fas fa-edit"></i></a>
                                     <a class="item-control item-delete" title="Deletar"><i class="fas fa-trash"></i></a>
@@ -74,8 +74,8 @@
                         {{#each actor.h_man as |hab|}}
                             <tr data-item-id="{{hab.id}}" class="item">
                                 <td class="mediaeval"><a class="dragable rollable" data-item-id="{{ hab.id }}">{{hab.name}}</a></td>
-                                <td class="mediaeval" style="text-align: center;">{{hab.data.data.nivel}}</td>
-                                <td class="mediaeval" style="text-align: center;">{{hab.data.data.total}}</td>
+                                <td class="mediaeval" style="text-align: center;">{{hab.system.nivel}}</td>
+                                <td class="mediaeval" style="text-align: center;">{{hab.system.total}}</td>
                                 <td style="text-align: center;">
                                     <a class="item-control item-edit" title="Editar"><i class="fas fa-edit"></i></a>
                                     <a class="item-control item-delete" title="Deletar"><i class="fas fa-trash"></i></a>
@@ -95,8 +95,8 @@
                         {{#each actor.h_con as |hab|}}
                             <tr data-item-id="{{hab.id}}" class="item">
                                 <td class="mediaeval"><a class="dragable rollable" data-item-id="{{ hab.id }}">{{hab.name}}</a></td>
-                                <td class="mediaeval" style="text-align: center;">{{hab.data.data.nivel}}</td>
-                                <td class="mediaeval" style="text-align: center;">{{hab.data.data.total}}</td>
+                                <td class="mediaeval" style="text-align: center;">{{hab.system.nivel}}</td>
+                                <td class="mediaeval" style="text-align: center;">{{hab.system.total}}</td>
                                 <td style="text-align: center;">
                                     <a class="item-control item-edit" title="Editar"><i class="fas fa-edit"></i></a>
                                     <a class="item-control item-delete" title="Deletar"><i class="fas fa-trash"></i></a>
@@ -118,8 +118,8 @@
                         {{#each actor.h_sub as |hab|}}
                             <tr data-item-id="{{hab.id}}" class="item">
                                 <td class="mediaeval"><a class="dragable rollable" data-item-id="{{ hab.id }}">{{hab.name}}</a></td>
-                                <td class="mediaeval" style="text-align: center;">{{hab.data.data.nivel}}</td>
-                                <td class="mediaeval" style="text-align: center;">{{hab.data.data.total}}</td>
+                                <td class="mediaeval" style="text-align: center;">{{hab.system.nivel}}</td>
+                                <td class="mediaeval" style="text-align: center;">{{hab.system.total}}</td>
                                 <td style="text-align: center;">
                                     <a class="item-control item-edit" title="Editar"><i class="fas fa-edit"></i></a>
                                     <a class="item-control item-delete" title="Deletar"><i class="fas fa-trash"></i></a>
@@ -139,8 +139,8 @@
                         {{#each actor.h_inf as |hab|}}
                             <tr data-item-id="{{hab.id}}" class="item">
                                 <td class="mediaeval"><a class="dragable rollable" data-item-id="{{ hab.id }}">{{hab.name}}</a></td>
-                                <td class="mediaeval" style="text-align: center;">{{hab.data.data.nivel}}</td>
-                                <td class="mediaeval" style="text-align: center;">{{hab.data.data.total}}</td>
+                                <td class="mediaeval" style="text-align: center;">{{hab.system.nivel}}</td>
+                                <td class="mediaeval" style="text-align: center;">{{hab.system.total}}</td>
                                 <td style="text-align: center;">
                                     <a class="item-control item-edit" title="Editar"><i class="fas fa-edit"></i></a>
                                     <a class="item-control item-delete" title="Deletar"><i class="fas fa-trash"></i></a>
@@ -160,8 +160,8 @@
                         {{#each actor.h_geral as |hab|}}
                             <tr data-item-id="{{hab.id}}" class="item">
                                 <td class="mediaeval"><a class="dragable rollable" data-item-id="{{ hab.id }}">{{hab.name}}</a></td>
-                                <td class="mediaeval" style="text-align: center;">{{hab.data.data.nivel}}</td>
-                                <td class="mediaeval" style="text-align: center;">{{hab.data.data.total}}</td>
+                                <td class="mediaeval" style="text-align: center;">{{hab.system.nivel}}</td>
+                                <td class="mediaeval" style="text-align: center;">{{hab.system.total}}</td>
                                 <td style="text-align: center;">
                                     <a class="item-control item-edit" title="Editar"><i class="fas fa-edit"></i></a>
                                     <a class="item-control item-delete" title="Deletar"><i class="fas fa-trash"></i></a>

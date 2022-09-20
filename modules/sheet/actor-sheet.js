@@ -15,7 +15,7 @@ export default class fichaOficial extends ActorSheet {
         });
     }
     get template() {
-        if (this.actor.data.type != "Personagem") {
+        if (this.document.type != "Personagem") {
             return;
         }
         let layout = game.settings.get(game.system.id, "sheetTemplate");
@@ -75,20 +75,20 @@ export default class fichaOficial extends ActorSheet {
         const gameSystem = game.system.id;
         const actorUtils = await import("/systems/"+ gameSystem +"/modules/sheets/actorUtils.js");
         data.dtypes = ["String", "Number", "Boolean"];
-        if (data.actor.data.type == 'Personagem') {
+        if (data.document.type == 'Personagem') {
             let updatePers = {};
             let items_toUpdate = [];
             this._getItems(data);
-            if (!game.settings.get(gameSystem, 'ajusteManual')) actorUtils._setPontosRaca(data, updatePers); // pontos = actor.data.data.carac_final.INT
+            if (!game.settings.get(gameSystem, 'ajusteManual')) actorUtils._setPontosRaca(data, updatePers); // pontos = actor.system.carac_final.INT
             actorUtils._prepareValorTeste(data, updatePers);
-            if (data.actor.raca) {
+            if (data.document.raca) {
                 actorUtils._preparaCaracRaciais(data, updatePers);
             }
-            if (data.actor.profissao) {
+            if (data.document.profissao) {
                 actorUtils._attProfissao(data, updatePers, items_toUpdate);
             }
             actorUtils._attCargaAbsorcaoDefesa(data, updatePers);
-            if (data.actor.raca && data.actor.profissao) {
+            if (data.document.raca && data.document.profissao) {
                 actorUtils._attEfEhVB(data, updatePers); 
             }
             actorUtils._attProximoEstag(data, updatePers);
@@ -102,12 +102,12 @@ export default class fichaOficial extends ActorSheet {
             if (Object.keys(updatePers).length > 0 && options.editable) {
                 if (!this.lastUpdate) {
                     this.lastUpdate = updatePers;
-                    data.actor.update(updatePers);
+                    data.document.update(updatePers);
                     //ui.notifications.info("Ficha atualizada.");
                 }
                 else if (JSON.stringify(updatePers) !== JSON.stringify(this.lastUpdate)) {   // updatePers[Object.keys(updatePers)[0]] != this.lastUpdate[Object.keys(updatePers)[0]]
                     this.lastUpdate = updatePers;
-                    data.actor.update(updatePers);
+                    data.document.update(updatePers);
                     //ui.notifications.info("Ficha atualizada.");
                 }
             }
@@ -117,14 +117,14 @@ export default class fichaOficial extends ActorSheet {
             if (items_toUpdate.length > 0 && options.editable) {
                 if (!this.lastItemsUpdate) {
                     this.lastItemsUpdate = items_toUpdate;
-                    data.actor.updateEmbeddedDocuments("Item", items_toUpdate);
+                    data.document.updateEmbeddedDocuments("Item", items_toUpdate);
                 } else if (JSON.stringify(items_toUpdate) !== JSON.stringify(this.lastItemsUpdate)) {
                     this.lastItemsUpdate = items_toUpdate;
-                    data.actor.updateEmbeddedDocuments("Item", items_toUpdate);
+                    data.document.updateEmbeddedDocuments("Item", items_toUpdate);
                 }
             }
         } else {
-            this.actor.setFlag('core', 'sheetClass', 'tagmar.tagmarActorSheet');
+            this.document.setFlag('core', 'sheetClass', 'tagmar.tagmarActorSheet');
             return;
         }
         return data;
@@ -136,7 +136,7 @@ export default class fichaOficial extends ActorSheet {
 
         html.find('.item-edit').click(ev => {                       // Item Edit
             const li = $(ev.currentTarget).parents(".item");
-            const item = this.actor.items.get(li.data('itemId'));
+            const item = this.document.items.get(li.data('itemId'));
             item.sheet.render(true);
         });
 
@@ -150,7 +150,7 @@ export default class fichaOficial extends ActorSheet {
                         icon: "<i class='fas fa-check'></i>",
                         label: "Confirmar",
                         callback: () => {
-                            this.actor.deleteEmbeddedDocuments("Item", [li.data("itemId")]);
+                            this.document.deleteEmbeddedDocuments("Item", [li.data("itemId")]);
                             li.slideUp(200, () => this.render(false));
                         }
                     },
@@ -170,7 +170,7 @@ export default class fichaOficial extends ActorSheet {
         html.find(".rollAtributo").click(this._rolarAtt.bind(this));
         html.find('.editRaca').click(this._editRaca.bind(this));
         html.find('.editProf').click(this._editProf.bind(this));
-        if (this.actor.isOwner) {
+        if (this.document.isOwner) {
             let handler = ev => this._onDragStart(ev);
             html.find('.dragable').each((i, li) => {
                 if (li.classList.contains("inventory-header")) return;
@@ -187,7 +187,7 @@ export default class fichaOficial extends ActorSheet {
             r.evaluate({async:false});
             r.toMessage({
                 user: game.user.id,
-                speaker: ChatMessage.getSpeaker({ actor: this.actor }),
+                speaker: ChatMessage.getSpeaker({ actor: this.document }),
                 flavor: ``
             });
             $(html.find(".valord10EH")).val(r.total);
@@ -250,14 +250,14 @@ export default class fichaOficial extends ActorSheet {
                         $(ul).each(function (i, c) {
                             idiomas.push(c.value);
                         });
-                        this.actor.update({
-                            'data.defesa.categoria': idiomas.join(';')
+                        this.document.update({
+                            'system.defesa.categoria': idiomas.join(';')
                         });
                     }
                 }
             },
             render: (html) => {
-                let idiomas = this.actor.data.data.defesa.categoria.split(';');
+                let idiomas = this.document.system.defesa.categoria.split(';');
                 html.find('input[type="checkbox"]').each(function (i, c) {
                     if (idiomas.includes(c.value)) {
                         $(c).prop('checked',true);
@@ -270,12 +270,12 @@ export default class fichaOficial extends ActorSheet {
 
     _rolarIniciativa(event) {
         if (!this.options.editable) return;
-        if (game.combats.size > 0) this.actor.rollInitiative({createCombatants:false, rerollInitiative:false});
+        if (game.combats.size > 0) this.document.rollInitiative({createCombatants:false, rerollInitiative:false});
     }
 
     _newMagia(event) {
         if (!this.options.editable) return;
-        const actor = this.actor;
+        const actor = this.document;
         actor.createEmbeddedDocuments('Item', [{name: "Nova Magia", type: "Magia"}]).then(function (item) {
             item[0].sheet.render(true);
         });
@@ -285,7 +285,7 @@ export default class fichaOficial extends ActorSheet {
         if (!this.options.editable) return;
         let create = false;
         let tipo = "";
-        const actor = this.actor;
+        const actor = this.document;
         let dialogContent = `<div>
             <label for="selectTipo" class="mediaeval">Selecione o tipo do item:</label>
             <select id="selectTipo" name="selectTipo" class="selectType mediaeval" height="30" style="margin-left:2px;">
@@ -328,7 +328,7 @@ export default class fichaOficial extends ActorSheet {
         if (!this.options.editable) return;
         let create = false;
         let tipo = "";
-        const actor = this.actor;
+        const actor = this.document;
         let dialogContent = `<div>
             <label for="selectTipo" class="mediaeval">Selecione o tipo do item:</label>
             <select id="selectTipo" name="selectTipo" class="selectType mediaeval" height="30" style="margin-left:2px;">
@@ -374,7 +374,7 @@ export default class fichaOficial extends ActorSheet {
 
     _newHabilidade(event) {
         if (!this.options.editable) return;
-        const actor = this.actor;
+        const actor = this.document;
         actor.createEmbeddedDocuments("Item", [{name: "Nova Habilidade", type: "Habilidade", data: {tipo: "profissional"}}]).then(function (item) {
             item[0].sheet.render(true);
         });
@@ -382,14 +382,14 @@ export default class fichaOficial extends ActorSheet {
 
     _newEfeito(event) {
         if (!this.options.editable) return;
-        const actor = this.actor;
+        const actor = this.document;
         actor.createEmbeddedDocuments('Item', [{name: "Novo Efeito", type: "Efeito"}]).then(function (efeito) {
             efeito[0].sheet.render(true);
         });
     }
 
     _passandoEH(event) {
-        let estagio_atual = this.actor.data.data.estagio;
+        let estagio_atual = this.document.system.estagio;
         let valord10 = parseInt($(".valord10EH").val());
         if (!valord10 && estagio_atual > 1) {
             ui.notifications.warn("Clique em '1d10' para rolar o dado ou preencha o valor no campo.");
@@ -398,40 +398,40 @@ export default class fichaOficial extends ActorSheet {
         }
         let raca_list = [];
         let nova_eh = 0;
-        let eh_atual = this.actor.data.data.eh.max;
-        let attFIS = this.actor.data.data.atributos.FIS;
+        let eh_atual = this.document.system.eh.max;
+        let attFIS = this.document.system.atributos.FIS;
         if (estagio_atual > 1 && valord10 > 0 && valord10 <= 10) {
             if (this.profissao) {
                 if (valord10 >= 1 && valord10 <= 2) {
-                    nova_eh = this.profissao.data.data.lista_eh.v1;
-                    this.actor.update({
-                        "data.eh.max": eh_atual + nova_eh + attFIS
+                    nova_eh = this.profissao.system.lista_eh.v1;
+                    this.document.update({
+                        "system.eh.max": eh_atual + nova_eh + attFIS
                     });
                     ui.notifications.info("Nova EH calculada.");
                 } else if (valord10 >= 3 && valord10 <= 5) {
-                    nova_eh = this.profissao.data.data.lista_eh.v2;
-                    this.actor.update({
-                        "data.eh.max": eh_atual + nova_eh + attFIS
+                    nova_eh = this.profissao.system.lista_eh.v2;
+                    this.document.update({
+                        "system.eh.max": eh_atual + nova_eh + attFIS
                     });
                     ui.notifications.info("Nova EH calculada.");
                 } else if (valord10 >= 6 && valord10 <= 8) {
-                    nova_eh = this.profissao.data.data.lista_eh.v3;
-                    this.actor.update({
-                        "data.eh.max": eh_atual + nova_eh + attFIS
+                    nova_eh = this.profissao.system.lista_eh.v3;
+                    this.document.update({
+                        "system.eh.max": eh_atual + nova_eh + attFIS
                     });
                     ui.notifications.info("Nova EH calculada.");
                 } else if (valord10 >= 9 && valord10 <= 10) {
-                    nova_eh = this.profissao.data.data.lista_eh.v4;
-                    this.actor.update({
-                        "data.eh.max": eh_atual + nova_eh + attFIS
+                    nova_eh = this.profissao.system.lista_eh.v4;
+                    this.document.update({
+                        "system.eh.max": eh_atual + nova_eh + attFIS
                     });
                     ui.notifications.info("Nova EH calculada.");
                 }
             }
         }
-        if (this.actor.data.data.valor_dado_eh) {
-            this.actor.update({
-                "data.valor_dado_eh": null
+        if (this.document.system.valor_dado_eh) {
+            this.document.update({
+                "system.valor_dado_eh": null
             });
         }
         //$(".valord10EH").val("");
@@ -441,16 +441,16 @@ export default class fichaOficial extends ActorSheet {
     _onItemRightButton (event) {
         let button = $(event.currentTarget);
         const li = button.parents(".item");
-        const item = this.actor.items.get(li.data("itemId"));
-        if (typeof item.data.data.descricao == "string") {
-            let content = `<div style="height:800px" class='rola_desc mediaeval'><img src="${item.data.img}" style="display:block;margin-left:auto;margin-right:auto">`;
+        const item = this.document.items.get(li.data("itemId"));
+        if (typeof item.system.descricao == "string") {
+            let content = `<div style="height:800px" class='rola_desc mediaeval'><img src="${item.img}" style="display:block;margin-left:auto;margin-right:auto">`;
             content += `<h1 class="fairyDust" style="text-align:center;">${item.name}</h1>`;
-            if (item.data.type == "Magia") content += item.data.data.efeito ;
+            if (item.data.type == "Magia") content += item.system.efeito ;
             else if (item.data.type == "Habilidade") {
-                if (item.data.data.tarefAperf.length > 0) content += `<h3 class="mediaeval">Tarefas aperfeiçoadas:</h3>` +  item.data.data.tarefAperf;
-                content += `<br><br><h3 class="mediaeval">Descrição:</h3>` + item.data.data.descricao;
+                if (item.system.tarefAperf.length > 0) content += `<h3 class="mediaeval">Tarefas aperfeiçoadas:</h3>` +  item.system.tarefAperf;
+                content += `<br><br><h3 class="mediaeval">Descrição:</h3>` + item.system.descricao;
             }
-            else content += item.data.data.descricao;
+            else content += item.system.descricao;
             content += `</div>`;
             let dialog = new Dialog({
                 title: item.name,
@@ -464,13 +464,13 @@ export default class fichaOficial extends ActorSheet {
     _onItemRoll (event) {
         let button = $(event.currentTarget);
         const li = button.parents(".item");
-        const item = this.actor.items.get(li.data("itemId"));
+        const item = this.document.items.get(li.data("itemId"));
         item.rollTagmarItem();
     }
 
     _editRaca(event) {
         if (!this.options.editable) return;
-        const actor = this.actor;
+        const actor = this.document;
         const raca = actor.items.find(item => item.type == "Raca");
         if (!raca) {
             actor.createEmbeddedDocuments("Item", [{name: "Raça", type: "Raca"}]).then(function (item) {
@@ -481,7 +481,7 @@ export default class fichaOficial extends ActorSheet {
 
     _editProf(event) {
         if (!this.options.editable) return;
-        const actor = this.actor;
+        const actor = this.document;
         const profissao = actor.items.find(item => item.type == "Profissao");
         if (!profissao) {
             actor.createEmbeddedDocuments("Item", [{name: "Profissão", type: "Profissao"}]).then(function (item) {
@@ -494,23 +494,23 @@ export default class fichaOficial extends ActorSheet {
         const target = event.currentTarget;
         const cat = $(target).data("itemId");
         let teste = {name: "Atributo", id: cat};
-        this.actor._rollTeste(teste);
+        this.document._rollTeste(teste);
     }
     
     _ativaEfeito(event) {
         let button = $(event.currentTarget);
         const li = button.parents(".item");
-        const item = this.actor.items.get(li.data("itemId"));
-        let ativo = item.data.data.ativo;
+        const item = this.document.items.get(li.data("itemId"));
+        let ativo = item.system.ativo;
         let ativa;
         if (ativo) {
             ativa = false;
         } else {
             ativa = true;
         }
-        this.actor.updateEmbeddedDocuments("Item", [{
-            "_id": item.data._id,
-            "data.ativo": ativa
+        this.document.updateEmbeddedDocuments("Item", [{
+            "_id": item._id,
+            "system.ativo": ativa
         }]);
         event.preventDefault();
     }
@@ -554,7 +554,7 @@ export default class fichaOficial extends ActorSheet {
             },
             default: "Cancelar",
             close: html => {
-                if (rolar) this.actor._rollTeste({name: "Resistencia", id: tipo, f_ataque: f_ataque});
+                if (rolar) this.document._rollTeste({name: "Resistencia", id: tipo, f_ataque: f_ataque});
             }
         });
         dialog.render(true);
@@ -564,12 +564,12 @@ export default class fichaOficial extends ActorSheet {
         const actorData = sheetData.actor;
         // get items
         const pertences = actorData.items.filter(item => item.type == "Pertence");
-        const h_prof = actorData.items.filter(item => item.type == "Habilidade" && item.data.data.tipo == "profissional");
-        const h_man = actorData.items.filter(item => item.type == "Habilidade" && item.data.data.tipo == "manobra");
-        const h_con = actorData.items.filter(item => item.type == "Habilidade" && item.data.data.tipo == "conhecimento");
-        const h_sub = actorData.items.filter(item => item.type == "Habilidade" && item.data.data.tipo == "subterfugio");
-        const h_inf = actorData.items.filter(item => item.type == "Habilidade" && item.data.data.tipo == "influencia");
-        const h_geral = actorData.items.filter(item => item.type == "Habilidade" && item.data.data.tipo == "geral");
+        const h_prof = actorData.items.filter(item => item.type == "Habilidade" && item.system.tipo == "profissional");
+        const h_man = actorData.items.filter(item => item.type == "Habilidade" && item.system.tipo == "manobra");
+        const h_con = actorData.items.filter(item => item.type == "Habilidade" && item.system.tipo == "conhecimento");
+        const h_sub = actorData.items.filter(item => item.type == "Habilidade" && item.system.tipo == "subterfugio");
+        const h_inf = actorData.items.filter(item => item.type == "Habilidade" && item.system.tipo == "influencia");
+        const h_geral = actorData.items.filter(item => item.type == "Habilidade" && item.system.tipo == "geral");
         const profissoes = actorData.items.filter(item => item.type == "Profissao");
         const combate = actorData.items.filter(item => item.type == "Combate");
         const tecnicas = actorData.items.filter(item => item.type == "TecnicasCombate");
@@ -659,7 +659,7 @@ export default class fichaOficial extends ActorSheet {
             return a.name.localeCompare(b.name);
         });
         if (profissoes[0]) {
-            especializacoes = profissoes[0].data.data.especializacoes.split(",");
+            especializacoes = profissoes[0].system.especializacoes.split(",");
         }
         if (combate.length > 1) combate.sort(function (a, b) {
             return a.name.localeCompare(b.name);
@@ -668,7 +668,7 @@ export default class fichaOficial extends ActorSheet {
             return a.name.localeCompare(b.name);
         });
         /*if (tecnicas.length > 1) tecnicas.sort(function (a, b) {
-            return a.data.data.categoria.localeCompare(b.data.data.categoria);
+            return a.system.categoria.localeCompare(b.system.categoria);
         });*/
         if (magias.length > 1) magias.sort(function (a, b) {
             return a.name.localeCompare(b.name);

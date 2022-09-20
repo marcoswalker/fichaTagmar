@@ -13,8 +13,8 @@
                     {{#each actor.magias as |magia|}}
                         <tr class="item" data-item-id="{{magia.id}}">
                             <td class="mediaeval" style="text-align: left;"><a class="rollable dragable" data-item-id="{{magia.id}}">{{ magia.name }}</a></td>
-                            <td class="mediaeval" style="text-align: center;">{{ magia.data.data.nivel }}</td>
-                            <td class="mediaeval" style="text-align: center;">{{ fataque magia.data.data.nivel actor.data.data.atributos.AUR }}</td>
+                            <td class="mediaeval" style="text-align: center;">{{ magia.system.nivel }}</td>
+                            <td class="mediaeval" style="text-align: center;">{{ fataque magia.system.nivel actor.system.atributos.AUR }}</td>
                             <td style="text-align: center;">
                                 <a class="item-control item-edit" title="Editar"><i class="fas fa-edit"></i></a>
                                 <a class="item-control item-delete" title="Deletar"><i class="fas fa-trash"></i></a>
@@ -32,7 +32,7 @@
                             <tr style="border-width: 0;">
                                 <th class='mediaeval' style="border-width: 0;text-align:right;">Karma</th>
                                 <td style="border-width: 0;text-align:center;">
-                                    <input style="width: 60px;border-width:0;" type="number" name="data.karma.value" value="{{ data.data.karma.value }}"/> / <input style="width: 60px;border-width:0;" type="number" name="data.karma.max" value="{{ data.data.karma.max }}" readonly/>
+                                    <input style="width: 60px;border-width:0;" type="number" name="system.karma.value" value="{{ data.system.karma.value }}"/> / <input style="width: 60px;border-width:0;" type="number" name="system.karma.max" value="{{ data.system.karma.max }}" readonly/>
                                 </td>
                             </tr>
                         </table>
@@ -46,27 +46,27 @@
                             <table>
                                 <tr>
                                     <th class="mediaeval" style="border-width:1px;">Atributos</th>
-                                    <td class="mediaeval">{{toFixed data.data.carac_final.INT 1}}</td>
+                                    <td class="mediaeval">{{toFixed data.system.carac_final.INT 1}}</td>
                                 </tr>
                                 <tr>
                                     <th class="mediaeval" style="border-width:1px;">Habilidades</th>
-                                    <td class="mediaeval">{{data.data.pontos_aqui}}</td>
+                                    <td class="mediaeval">{{data.system.pontos_aqui}}</td>
                                 </tr>
                                 <tr>
                                     <th class="mediaeval" style="border-width:1px;">Combate</th>
-                                    <td class="mediaeval">{{data.data.pontos_comb}}</td>
+                                    <td class="mediaeval">{{data.system.pontos_comb}}</td>
                                 </tr>
                                 <tr>
                                     <th class="mediaeval" style="border-width:1px;">Técnicas</th>
-                                    <td class="mediaeval">{{data.data.pontos_tec}}</td>
+                                    <td class="mediaeval">{{data.system.pontos_tec}}</td>
                                 </tr>
                                 <tr>
                                     <th class="mediaeval" style="border-width:1px;">Magias</th>
-                                    <td class="mediaeval">{{data.data.pontos_mag}}</td>
+                                    <td class="mediaeval">{{data.system.pontos_mag}}</td>
                                 </tr>
                                 <tr>
                                     <th class="mediaeval" style="border-width:1px;">Caracterizações</th>
-                                    <td class="mediaeval">{{pontos_carac data.data.estagio}}</td>
+                                    <td class="mediaeval">{{pontos_carac data.system.estagio}}</td>
                                 </tr>
                             </table>
                         </div>

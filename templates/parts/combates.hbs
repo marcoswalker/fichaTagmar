@@ -23,14 +23,14 @@
                             {{#each actor.combate as |combate|}}
                                 <tr class="item" data-item-id="{{combate.id}}">
                                     <td class="mediaeval" style="text-align: left;"><a class="rollable dragable" data-item-id="{{combate.id}}">{{combate.name}}</a></td>
-                                    <td class="mediaeval" style="text-align: center;">{{combate.data.data.alcance}}</td>
-                                    <td class="mediaeval" style="text-align: center;">{{soma combate.data.data.def_l combate.data.data.custo combate.data.data.bonus_magico combate.data.data.nivel}}</td>
-                                    <td class="mediaeval" style="text-align: center;">{{soma combate.data.data.def_m combate.data.data.custo combate.data.data.bonus_magico combate.data.data.nivel}}</td>
-                                    <td class="mediaeval" style="text-align: center;">{{soma combate.data.data.def_p combate.data.data.custo combate.data.data.bonus_magico combate.data.data.nivel}}</td>
-                                    <td class="mediaeval" style='text-align:center;'>{{combate.data.data.dano.d100}}</td>
-                                    <td class="mediaeval" style='text-align:center;'>{{combate.data.data.dano.d75}}</td>
-                                    <td class="mediaeval" style='text-align:center;'>{{combate.data.data.dano.d50}}</td>
-                                    <td class="mediaeval" style='text-align:center;'>{{combate.data.data.dano.d25}}</td>
+                                    <td class="mediaeval" style="text-align: center;">{{combate.system.alcance}}</td>
+                                    <td class="mediaeval" style="text-align: center;">{{soma combate.system.def_l combate.system.custo combate.system.bonus_magico combate.system.nivel}}</td>
+                                    <td class="mediaeval" style="text-align: center;">{{soma combate.system.def_m combate.system.custo combate.system.bonus_magico combate.system.nivel}}</td>
+                                    <td class="mediaeval" style="text-align: center;">{{soma combate.system.def_p combate.system.custo combate.system.bonus_magico combate.system.nivel}}</td>
+                                    <td class="mediaeval" style='text-align:center;'>{{combate.system.dano.d100}}</td>
+                                    <td class="mediaeval" style='text-align:center;'>{{combate.system.dano.d75}}</td>
+                                    <td class="mediaeval" style='text-align:center;'>{{combate.system.dano.d50}}</td>
+                                    <td class="mediaeval" style='text-align:center;'>{{combate.system.dano.d25}}</td>
                                     <td style="text-align: center;">
                                         <a class="item-control item-edit" title="Editar"><i class="fas fa-edit"></i></a>
                                         <a class="item-control item-delete" title="Deletar"><i class="fas fa-trash"></i></a>
@@ -63,52 +63,52 @@
                         </tr>
                         <tr>
                             <td>
-                                <input type="number" name="data.grupos.CD" value="{{ data.data.grupos.CD }}"/>
+                                <input type="number" name="system.grupos.CD" value="{{ data.system.grupos.CD }}"/>
                             </td>
                             <td>
-                                <input type="number" name="data.grupos.CI" value="{{ data.data.grupos.CI }}"/>
+                                <input type="number" name="system.grupos.CI" value="{{ data.system.grupos.CI }}"/>
                             </td>
                             <td>
-                                <input type="number" name="data.grupos.CL" value="{{ data.data.grupos.CL }}"/>
+                                <input type="number" name="system.grupos.CL" value="{{ data.system.grupos.CL }}"/>
                             </td>
                             <td>
-                                <input type="number" name="data.grupos.CLD" value="{{ data.data.grupos.CLD }}"/>
+                                <input type="number" name="system.grupos.CLD" value="{{ data.system.grupos.CLD }}"/>
                             </td>
                             <td>
-                                <input type="number" name="data.grupos.EL" value="{{ data.data.grupos.EL }}"/>
+                                <input type="number" name="system.grupos.EL" value="{{ data.system.grupos.EL }}"/>
                             </td>
                             <td>
-                                <input type="number" name="data.grupos.CmE" value="{{ data.data.grupos.CmE }}"/>
+                                <input type="number" name="system.grupos.CmE" value="{{ data.system.grupos.CmE }}"/>
                             </td>
                             <td>
-                                <input type="number" name="data.grupos.CmM" value="{{ data.data.grupos.CmM }}"/>
+                                <input type="number" name="system.grupos.CmM" value="{{ data.system.grupos.CmM }}"/>
                             </td>
                             <td>
-                                <input type="number" name="data.grupos.EM" value="{{ data.data.grupos.EM }}"/>
+                                <input type="number" name="system.grupos.EM" value="{{ data.system.grupos.EM }}"/>
                             </td>
                             <td>
-                                <input type="number" name="data.grupos.PmA" value="{{ data.data.grupos.PmA }}"/>
+                                <input type="number" name="system.grupos.PmA" value="{{ data.system.grupos.PmA }}"/>
                             </td>
                             <td>
-                                <input type="number" name="data.grupos.PpA" value="{{ data.data.grupos.PpA }}"/>
+                                <input type="number" name="system.grupos.PpA" value="{{ data.system.grupos.PpA }}"/>
                             </td>
                             <td>
-                                <input type="number" name="data.grupos.PpB" value="{{ data.data.grupos.PpB }}"/>
+                                <input type="number" name="system.grupos.PpB" value="{{ data.system.grupos.PpB }}"/>
                             </td>
                             <td>
-                                <input type="number" name="data.grupos.PmL" value="{{ data.data.grupos.PmL }}"/>
+                                <input type="number" name="system.grupos.PmL" value="{{ data.system.grupos.PmL }}"/>
                             </td>
                             <td>
-                                <input type="number" name="data.grupos.CpE" value="{{ data.data.grupos.CpE }}"/>
+                                <input type="number" name="system.grupos.CpE" value="{{ data.system.grupos.CpE }}"/>
                             </td>
                             <td>
-                                <input type="number" name="data.grupos.CpM" value="{{ data.data.grupos.CpM }}"/>
+                                <input type="number" name="system.grupos.CpM" value="{{ data.system.grupos.CpM }}"/>
                             </td>
                             <td>
-                                <input type="number" name="data.grupos.EP" value="{{ data.data.grupos.EP }}"/>
+                                <input type="number" name="system.grupos.EP" value="{{ data.system.grupos.EP }}"/>
                             </td>
                             <td>
-                                <input type="number" name="data.grupos.PP" value="{{ data.data.grupos.PP }}"/>
+                                <input type="number" name="system.grupos.PP" value="{{ data.system.grupos.PP }}"/>
                             </td>
                         </tr>
                     </table>
@@ -123,12 +123,12 @@
                             <caption class="mediaeval">EF</caption>
                             <tr style="border-width: 0;">
                                 <td style="border-width: 0;">
-                                    <input type="number" style="width: 50px;text-align:center;" name="data.ef.value" value="{{ data.data.ef.value }}"/>
+                                    <input type="number" style="width: 50px;text-align:center;" name="system.ef.value" value="{{ data.system.ef.value }}"/>
                                 </td>
                             </tr>
                             <tr style="border-width: 0;">
                                 <td style="border-width: 0;">
-                                    <input type="number" style="width: 50px;height:80px;text-align:center;" name="data.ef.max" value="{{ data.data.ef.max }}" readonly/>
+                                    <input type="number" style="width: 50px;height:80px;text-align:center;" name="system.ef.max" value="{{ data.system.ef.max }}" readonly/>
                                 </td>
                             </tr>
                         </table>
@@ -139,12 +139,12 @@
                             <caption class="mediaeval">EH</caption>
                             <tr style="border-width: 0;">
                                 <td style="border-width: 0;">
-                                    <input type="number" style="width: 50px;text-align:center;" name="data.eh.value" value="{{ data.data.eh.value }}"/>
+                                    <input type="number" style="width: 50px;text-align:center;" name="system.eh.value" value="{{ data.system.eh.value }}"/>
                                 </td>
                             </tr>
                             <tr style="border-width: 0;">
                                 <td style="border-width: 0;">
-                                    <input type="number" style="width: 50px;height:80px;text-align:center;" name="data.eh.max" value="{{ data.data.eh.max }}" readonly/>
+                                    <input type="number" style="width: 50px;height:80px;text-align:center;" name="system.eh.max" value="{{ data.system.eh.max }}" readonly/>
                                 </td>
                             </tr>
                         </table>
@@ -164,7 +164,7 @@
                                 <th class="mediaeval" style="border-color:gray;">Ativa</th>
                             </tr>
                             <tr>
-                                <td class="mediaeval" style="text-align: center;">{{data.data.d_ativa.categoria}} {{data.data.d_ativa.valor}}</td>
+                                <td class="mediaeval" style="text-align: center;">{{data.system.d_ativa.categoria}} {{data.system.d_ativa.valor}}</td>
                             </tr>
                         </table>
                     </div>
@@ -174,7 +174,7 @@
                                 <th class="mediaeval" style="border-color:gray;">Passiva</th>
                             </tr>
                             <tr>
-                                <td class="mediaeval" style="text-align: center;">{{data.data.d_passiva.categoria}} {{data.data.d_passiva.valor}}</td>
+                                <td class="mediaeval" style="text-align: center;">{{data.system.d_passiva.categoria}} {{data.system.d_passiva.valor}}</td>
                             </tr>
                         </table>
                     </div>
@@ -196,8 +196,8 @@
                             {{#each actor.tecnicas as |tecnica|}}
                                 <tr class="item" data-item-id="{{tecnica.id}}">
                                     <td class="mediaeval"><a class="rollable dragable" data-item-id="{{tecnica.id}}">{{ tecnica.name }}</a></td>
-                                    <td class="mediaeval" style="text-align: center;">{{ tecnica.data.data.nivel }}</td>
-                                    <td class="mediaeval" style="text-align: center;">{{ tecnica.data.data.total }}</td>
+                                    <td class="mediaeval" style="text-align: center;">{{ tecnica.system.nivel }}</td>
+                                    <td class="mediaeval" style="text-align: center;">{{ tecnica.system.total }}</td>
                                     <td style="text-align: center;">
                                         <a class="item-control item-edit" title="Editar"><i class="fas fa-edit"></i></a>
                                         <a class="item-control item-delete" title="Deletar"><i class="fas fa-trash"></i></a>

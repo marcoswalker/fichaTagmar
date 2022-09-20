@@ -14,7 +14,7 @@ Hooks.once("init", function(){
 });
 
 Hooks.on('renderActorSheet', function (document, b, c) {
-    if (document.actor.getFlag('core', 'sheetClass') == "tagmar.fichaOficial" && document.actor.data.type != "Personagem") {
+    if (document.actor.getFlag('core', 'sheetClass') == "tagmar.fichaOficial" && document.actor.type != "Personagem") {
         document.actor.setFlag('core', 'sheetClass', 'tagmar.tagmarActorSheet');
         return false;
     }

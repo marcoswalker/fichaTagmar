@@ -6,25 +6,25 @@
                 <h2>Atributos Básicos</h2>
                 <div class="row">
                     <div class="col-3"><label><a class="rollAtributo" data-item-id="INT">Intelecto</a></label></div>
-                    <div class="col-3"><input type="number" name="data.atributos.INT" value="{{ data.data.atributos.INT }}"/></div>
+                    <div class="col-3"><input type="number" name="system.atributos.INT" value="{{ data.system.atributos.INT }}"/></div>
                     <div class="col-3"><label><a class="rollAtributo" data-item-id="FIS">Físico</a></label></div>
-                    <div class="col-3"><input type="number" name="data.atributos.FIS" value="{{ data.data.atributos.FIS }}"/></div>
+                    <div class="col-3"><input type="number" name="system.atributos.FIS" value="{{ data.system.atributos.FIS }}"/></div>
                 </div>
                 <div class="row">
                     <div class="col-3"><label><a class="rollAtributo" data-item-id="AUR">Aura</a></label></div>
-                    <div class="col-3"><input type="number" name="data.atributos.AUR" value="{{ data.data.atributos.AUR }}"/></div>
+                    <div class="col-3"><input type="number" name="system.atributos.AUR" value="{{ data.system.atributos.AUR }}"/></div>
                     <div class="col-3"><label><a class="rollAtributo" data-item-id="AGI">Agilidade</a></label></div>
-                    <div class="col-3"><input type="number" name="data.atributos.AGI" value="{{ data.data.atributos.AGI }}"/></div>
+                    <div class="col-3"><input type="number" name="system.atributos.AGI" value="{{ data.system.atributos.AGI }}"/></div>
                 </div>
                 <div class="row">
                     <div class="col-3"><label><a class="rollAtributo" data-item-id="CAR">Carisma</a></label></div>
-                    <div class="col-3"><input type="number" name="data.atributos.CAR" value="{{ data.data.atributos.CAR }}"/></div>
+                    <div class="col-3"><input type="number" name="system.atributos.CAR" value="{{ data.system.atributos.CAR }}"/></div>
                     <div class="col-3"><label><a class="rollAtributo" data-item-id="PER">Percepção</a></label></div>
-                    <div class="col-3"><input type="number" name="data.atributos.PER" value="{{ data.data.atributos.PER }}"/></div>
+                    <div class="col-3"><input type="number" name="system.atributos.PER" value="{{ data.system.atributos.PER }}"/></div>
                 </div>
                 <div class="row">
                     <div class="col-3"><label><a class="rollAtributo" data-item-id="FOR">Força</a></label></div>
-                    <div class="col-3"><input type="number" name="data.atributos.FOR" value="{{ data.data.atributos.FOR }}"/></div>
+                    <div class="col-3"><input type="number" name="system.atributos.FOR" value="{{ data.system.atributos.FOR }}"/></div>
                     <div class="col-6"></div>
                 </div>
                 <div class="row">
@@ -37,7 +37,7 @@
                         <label>Resistência Física</label>
                     </div>
                     <div class="col-3">
-                        <input type="number" name="data.rf" value="{{ data.data.rf }}" readonly/>
+                        <input type="number" name="system.rf" value="{{ data.system.rf }}" readonly/>
                     </div>
                     <div class="col-2">
                         <a class="testeRF" title="Teste de Resistência Física."><i class="fas fa-dice-d20"></i></a>
@@ -48,7 +48,7 @@
                         <label>Restência à Magia</label>
                     </div>
                     <div class="col-3">
-                        <input type="number" name="data.rm" value="{{ data.data.rm }}" readonly/>
+                        <input type="number" name="system.rm" value="{{ data.system.rm }}" readonly/>
                     </div>
                     <div class="col-2">
                         <a class="testeRM" title="Teste de Resistência à Magia."><i class="fas fa-dice-d20"></i></a>
@@ -59,7 +59,7 @@
                         <label>Velocidade</label>
                     </div>
                     <div class="col-3">
-                        <input type="number" name="data.vb" value="{{ data.data.vb }}" readonly/>
+                        <input type="number" name="system.vb" value="{{ data.system.vb }}" readonly/>
                     </div>
                     <div class="col-2"></div>
                 </div>
@@ -71,7 +71,7 @@
                 <h2>Caracterizações</h2>
                 <div class="row">
                     <div class="col-12">
-                        <textarea style="height: 270px;" name="data.descricao" data-dtype="String" value="{{ data.data.descricao }}">{{ data.data.descricao }}</textarea>
+                        <textarea style="height: 270px;" name="system.descricao" data-dtype="String" value="{{ data.system.descricao }}">{{ data.system.descricao }}</textarea>
                     </div>
                 </div>
             </div>

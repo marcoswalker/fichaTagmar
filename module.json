@@ -1,31 +1,41 @@
 {
-    "name": "fichaTagmar",
-    "title": "Ficha Tagmar",
-    "description": "Ficha mais parecida com a oficial.",
-    "version": "1.0.9",
-    "minimumCoreVersion": "0.8.8",
-    "compatibleCoreVersion": "9",
-    "author": "Marcos Walker (Xaura)",
-    "authors": [
-		{
-			"name": "Marcos Walker",
-			"url": "https://github.com/marcoswalker"
-		}
-	],
-    "esmodules": [
-        "modules/main.js"
-    ],
-    "scripts": [
-        
-    ],
-    "system": [
-        "tagmar",
-        "tagmar_rpg"
-    ],
-    "styles": [
-        "styles/style.css"
-    ],
-    "url": "https://github.com/marcoswalker/fichaTagmar",
-    "manifest": "https://raw.githubusercontent.com/marcoswalker/fichaTagmar/master/module.json",
-    "download": "https://codeload.github.com/marcoswalker/fichaTagmar/zip/master"
+  "title": "Ficha Tagmar",
+  "description": "Ficha mais parecida com a oficial.",
+  "version": "1.1.0",
+  "authors": [
+    {
+      "name": "Marcos Walker",
+      "url": "https://github.com/marcoswalker",
+      "flags": {}
+    }
+  ],
+  "esmodules": [
+    "modules/main.js"
+  ],
+  "styles": [
+    "styles/style.css"
+  ],
+  "url": "https://github.com/marcoswalker/fichaTagmar",
+  "manifest": "https://raw.githubusercontent.com/marcoswalker/fichaTagmar/master/module.json",
+  "download": "https://codeload.github.com/marcoswalker/fichaTagmar/zip/master",
+  "id": "fichaTagmar",
+  "relationships": {
+    "systems": [
+      {
+        "id": "tagmar",
+        "type": "system",
+        "compatibility": {}
+      },
+      {
+        "id": "tagmar_rpg",
+        "type": "system",
+        "compatibility": {}
+      }
+    ]
+  },
+  "compatibility": {
+    "minimum": "10",
+    "verified": "10",
+    "maximum": "10"
+  }
 }

@@ -15,11 +15,11 @@
                     {{#each actor.efeitos as |efeito|}}
                         <tr class="item" data-item-id="{{efeito.id}}">
                             <td class="mediaeval">{{efeito.name}}</td>
-                            <td class="mediaeval" style="text-align: center;">{{efeito.data.data.atributo}}</td>
-                            <td class="mediaeval" style="text-align: center;">{{efeito.data.data.tipo}}</td>
-                            <td class="mediaeval" style="text-align: center;">{{efeito.data.data.valor}}</td>
+                            <td class="mediaeval" style="text-align: center;">{{efeito.system.atributo}}</td>
+                            <td class="mediaeval" style="text-align: center;">{{efeito.system.tipo}}</td>
+                            <td class="mediaeval" style="text-align: center;">{{efeito.system.valor}}</td>
                             <td class="mediaeval" style="text-align: center;">
-                                {{#if efeito.data.data.ativo}}
+                                {{#if efeito.system.ativo}}
                                     <a class="ativaEfeito" title="Desativar"><i class="fas fa-check-circle"></i></a>
                                 {{else}}
                                     <a class="ativaEfeito" title="Ativar"><i class="far fa-times-circle"></i></a>
@@ -40,7 +40,7 @@
                 <h2 style="text-align: center;">Informações adicionais</h2>
                 <div class="row">
                     <div class="col-3"><label>Iniciativa</label></div>
-                    <div class="col-3"><input style="width: 40px;" type="number" name="data.iniciativa" value="{{ data.data.iniciativa }}" /></div>
+                    <div class="col-3"><input style="width: 40px;" type="number" name="system.iniciativa" value="{{ data.system.iniciativa }}" /></div>
                     <div class="col-1"></div>
                     <div class="col-3" style="text-align: center;">
                         <a class="rolarIniciativa" title="Rolar Iniciativa."><i class="fas fa-dice-d20"></i></a>
@@ -50,22 +50,22 @@
                 <div class="row">
                     <div class="col-3"><label>Absorção</label></div>
                     <div class="col-3">
-                        <input type="number" style="width: 40px;" name="data.absorcao.value" value="{{ data.data.absorcao.value }}"/>
+                        <input type="number" style="width: 40px;" name="system.absorcao.value" value="{{ data.system.absorcao.value }}"/>
                     </div>
                     <div class="col-1"><label>/</label></div>
                     <div class="col-3">
-                        <input type="number" style="width: 40px;" name="data.absorcao.max" value="{{ data.data.absorcao.max }}" readonly/>
+                        <input type="number" style="width: 40px;" name="system.absorcao.max" value="{{ data.system.absorcao.max }}" readonly/>
                     </div>
                     <div class="col-2"></div>
                 </div>
                 <div class="row">
                     <div class="col-3"><label>Focus</label></div>
                     <div class="col-3">
-                        <input type="number" style="width: 40px;"  name="data.focus.value" value="{{ data.data.focus.value }}"/>
+                        <input type="number" style="width: 40px;"  name="system.focus.value" value="{{ data.system.focus.value }}"/>
                     </div>
                     <div class="col-1"><label>/</label></div>
                     <div class="col-3">
-                        <input type="number" style="width: 40px;" name="data.focus.max" value="{{ data.data.focus.max }}"/>
+                        <input type="number" style="width: 40px;" name="system.focus.max" value="{{ data.system.focus.max }}"/>
                     </div>
                     <div class="col-2"></div>
                 </div>
@@ -77,8 +77,8 @@
                 <div class="row">
                     <div class="col-2"></div>
                     <div class="col-4">
-                        <select title="Tipo da defesa do oponente." class="mediaeval" name="data.inf_ataque.cat_def" type="text" value="{{data.data.inf_ataque.cat_def}}" data-dtype="String" style="font-size: 110%;">
-                            {{#select data.data.inf_ataque.cat_def}}
+                        <select title="Tipo da defesa do oponente." class="mediaeval" name="system.inf_ataque.cat_def" type="text" value="{{data.system.inf_ataque.cat_def}}" data-dtype="String" style="font-size: 110%;">
+                            {{#select data.system.inf_ataque.cat_def}}
                                 <option value="L">L</option>
                                 <option value="M">M</option>
                                 <option value="P">P</option>
@@ -86,14 +86,14 @@
                         </select>
                     </div>
                     <div class="col-4">
-                        <input title="Valor da defesa do oponente." name="data.inf_ataque.valor_def" type="number" value="{{data.data.inf_ataque.valor_def}}" />
+                        <input title="Valor da defesa do oponente." name="system.inf_ataque.valor_def" type="number" value="{{data.system.inf_ataque.valor_def}}" />
                     </div>
                     <div class="col-2"></div>
                 </div>
                 <div class="row">
                     <div class="col-6"><label>Bônus/Penalidade</label></div>
                     <div class="col-4">
-                        <input title="Bônus/Penalidade será aplicado a todos os ataques.(Nenhum valor, preencher zero)" name="data.inf_ataque.bonus" type="number" value="{{data.data.inf_ataque.bonus}}" />
+                        <input title="Bônus/Penalidade será aplicado a todos os ataques.(Nenhum valor, preencher zero)" name="system.inf_ataque.bonus" type="number" value="{{data.system.inf_ataque.bonus}}" />
                     </div>
                     <div class="col-2"></div>
                 </div>
@@ -110,7 +110,7 @@
                                 <th class="mediaeval" style="border-color:gray;"><a title="Clique para rolar 1d10." class="roll1d10" style="margin-right: 10px;"><i class="fas fa-dice-d20"></i></a>  <a class="calculaNovaEH" title="Calcular EH"><i class="fas fa-calculator"></i></a></th>
                             </tr>
                             <tr style="text-align: center;">
-                                <td><input style="border-width: 0;" title="Valor sorteado." class="valord10EH" name="data.valor_dado_eh" value="{{data.data.valor_dado_eh}}" type="number"/></td>
+                                <td><input style="border-width: 0;" title="Valor sorteado." class="valord10EH" name="system.valor_dado_eh" value="{{data.system.valor_dado_eh}}" type="number"/></td>
                             </tr>
                         </table>
                     </div>
